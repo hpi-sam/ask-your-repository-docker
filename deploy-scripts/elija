@@ -1,0 +1,3 @@
+#!/bin/bash
+docker-compose pull elija
+docker-compose up -d --build --no-deps elija

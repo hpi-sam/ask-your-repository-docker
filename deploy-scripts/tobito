@@ -1,0 +1,3 @@
+#!/bin/bash
+docker-compose pull tobito
+docker-compose up -d --build --no-deps tobito
