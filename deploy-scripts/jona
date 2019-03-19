@@ -1,2 +1,2 @@
 #!/bin/bash
-docker service update --force jona
+docker service update --force $(docker stack ls --format {{.Name}})_jona
