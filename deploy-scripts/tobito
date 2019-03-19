@@ -1,2 +1,0 @@
-#!/bin/bash
-docker service update --force $(docker stack ls --format {{.Name}})_tobito

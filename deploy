@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker service update \
+--with-registry-auth \
+--force \
+--image $2 \
+$(docker stack ls --format {{.Name}})_$1
