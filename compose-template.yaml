@@ -5,32 +5,35 @@ services:
     depends_on:
       - jona
       - elija
+      - tobito
       - files_nginx
     volumes:
       - ./main-nginx.conf:/etc/nginx/conf.d/default.conf
-      - $LETSENCRYPT_SITE_DIR=:/usr/share/nginx/html
-      - $CERTIFICATES_DIR:/etc/nginx/certificates
+      - ${LETSENCRYPT_DIR}:/etc/letsencrypt
     ports:
       - 80:80
       - 443:443
   neo4j:
     image: neo4j:3.4.5
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 750M
     environment:
       - NEO4J_AUTH=none
     volumes:
       - $NEO4J_DIR:/data
-    ports:
-      - "7474:7474"
-      - "7687:7687"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 750M
     environment:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
     volumes:
       - esdata:/usr/share/elasticsearch/data
   elija:
@@ -40,7 +43,7 @@ services:
       - elasticsearch
     environment:
       - ES_URL=http://elasticsearch:9200
-      - FILE_SERVER=$FILE_SERVER_URL
+      - FILE_SERVER=${FILE_SERVER_URL}
       - UPLOAD_FOLDER=uploads/
       - NEO4J_URL=bolt://:@neo4j:7687
       - CLOUD_VISION_API_URL=https://vision.googleapis.com/v1/images:annotate
@@ -48,8 +51,8 @@ services:
       - JWT_SECRET_KEY=
       - SECURE_COOKIES=True
     volumes:
-      - $UPLOADS_DIR:/src/uploads
-      - $WORDKIT_DIR:/root/nltk_data
+      - ${UPLOADS_DIR}:/src/uploads
+      - ${WORDKIT_DIR}:/root/nltk_data
     command: ./wait-for.sh neo4j:7687 --timeout=60 -- ./start-gunicorn.sh
   jona:
     image: bp2018hg1/jona:latest
@@ -59,7 +62,7 @@ services:
     image: nginx:1.13.12-alpine
     volumes:
       - ./files-nginx.conf:/etc/nginx/conf.d/default.conf
-      - $UPLOADS_DIR:/files
+      - ${UPLOADS_DIR}:/files
 
 volumes:
   esdata:
