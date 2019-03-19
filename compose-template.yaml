@@ -8,8 +8,10 @@ services:
       - tobito
       - files_nginx
     volumes:
-      - ./main-nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./main-nginx.conf.template:/etc/nginx/conf.d/default.conf.template
       - ${LETSENCRYPT_DIR}:/etc/letsencrypt
+    env_file: ./nginx.env
+    command: sh -c "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     ports:
       - 80:80
       - 443:443
