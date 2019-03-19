@@ -1,3 +1,2 @@
 #!/bin/bash
-docker-compose pull jona
-docker-compose up -d --build --no-deps jona
+docker service update --force jona
