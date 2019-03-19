@@ -8,4 +8,4 @@ certonly --webroot \
 --register-unsafely-without-email --agree-tos \
 --webroot-path=/data/letsencrypt \
 --staging \
--d gravier-dein-bild.de -d www.gravier-dein-bild.de -d admin.gravier-dein-bild.de -d api.gravier-dein-bild.de
+-d *.staging.askyour.cloud
