@@ -6,7 +6,7 @@ A docker-compose deployment for ask-your-repository.
 
 Clone this repository on your server.
 
-`git clone git@github.com:hpi-sam/ask-your-repository-docker.git`
+`git clone https://github.com/hpi-sam/ask-your-repository-docker.git`
 
 Change directory
 
