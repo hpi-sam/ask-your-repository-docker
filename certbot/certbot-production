@@ -1,0 +1,18 @@
+#!/bin/bash
+. .env
+. ../.env
+
+sudo docker run -it --rm \
+-v $LETSENCRYPT_DIR/letsencrypt:/etc/letsencrypt \
+-v $LETSENCRYPT_SITE_DIR:/data/letsencrypt \
+-v $LETSENCRYPT_DIR/var/lib/letsencrypt:/var/lib/letsencrypt \
+-v $LETSENCRYPT_DIR/var/log/letsencrypt:/var/log/letsencrypt \
+-v $DIGITIALOCEAN_CREDENTIALS_PATH:/usr/src/digitalocean.ini \
+certbot/dns-digitalocean \
+certonly \
+--dns-digitalocean \
+--dns-digitalocean-credentials /usr/src/digitalocean.ini \
+--email $LETSENCRYPT_EMAIL --agree-tos --no-eff-email \
+# Uncomment the domains you want to create a certificate for
+#-d budget.askyour.cloud -d *.budget.askyour.cloud -d staging.askyour.cloud -d *.staging.askyour.cloud
+#-d askyour.cloud -d *.askyour.cloud
