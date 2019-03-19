@@ -18,7 +18,7 @@ Change directory
 
 Setup .env files
 
-`cp .env.example .env`  
+`cp .env.example .env`
 `cp nginx.env.example nginx.env`
 
 Fill the environment files with appropriate data.
@@ -50,7 +50,19 @@ Make sure all services are up and running
 The `docker-compose.yaml` is read only and is not checked into version control.
 To make adjustments to the file update the `compose-template.yaml` and run
 
-`./update-compose`  
+`./update-compose`
 `docker stack deploy -c docker-compose.yaml <name>`
 
 to create a new updated `docker-compose.yaml` and to apply the changes to the stack.
+
+## Redeploy services
+
+You can deploy another version of a service by using the `deploy` script.
+
+`./deploy <service> <image>`
+
+For example to deploy the latest Jona image:
+
+`./deploy jona bp2018hg1/jona:latest`
+
+Mind that you don't need to specify the real service name with the stack name as a prefix. The stack name is added automatically. For more informations view the script file.
