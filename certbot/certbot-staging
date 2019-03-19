@@ -1,0 +1,11 @@
+sudo docker run -it --rm \
+-v $LETSENCRYPT_DIR/letsencrypt:/etc/letsencrypt \
+-v $LETSENCRYPT_SITE_DIR:/data/letsencrypt \
+-v $LETSENCRYPT_DIR/var/lib/letsencrypt:/var/lib/letsencrypt \
+-v $LETSENCRYPT_DIR/var/log/letsencrypt:/var/log/letsencrypt \
+certbot/certbot \
+certonly --webroot \
+--register-unsafely-without-email --agree-tos \
+--webroot-path=/data/letsencrypt \
+--staging \
+-d gravier-dein-bild.de -d www.gravier-dein-bild.de -d admin.gravier-dein-bild.de -d api.gravier-dein-bild.de
