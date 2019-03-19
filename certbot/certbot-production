@@ -7,7 +7,7 @@ sudo docker run -it --rm \
 -v $LETSENCRYPT_SITE_DIR:/data/letsencrypt \
 -v $LETSENCRYPT_DIR/var/lib/letsencrypt:/var/lib/letsencrypt \
 -v $LETSENCRYPT_DIR/var/log/letsencrypt:/var/log/letsencrypt \
--v $DIGITIALOCEAN_CREDENTIALS_PATH:/usr/src/digitalocean.ini \
+-v $DIGITALOCEAN_CREDENTIALS_PATH:/usr/src/digitalocean.ini \
 certbot/dns-digitalocean \
 certonly \
 --dns-digitalocean \
