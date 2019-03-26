@@ -21,7 +21,9 @@ services:
       replicas: ${NEO4J_REPLICAS}
       resources:
         limits:
-          memory: 750M
+          memory: 1G
+        reservations:
+          memory: 800M
     environment:
       - NEO4J_AUTH=none
     volumes:
@@ -32,10 +34,12 @@ services:
       replicas: ${ELASTICSEARCH_REPLICAS}
       resources:
         limits:
-          memory: 750M
+          memory: 1G
+        reservations:
+          memory: 600M
     environment:
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - ES_JAVA_OPTS=-Xms600m -Xmx1g
     volumes:
       - esdata:/usr/share/elasticsearch/data
   elija:
