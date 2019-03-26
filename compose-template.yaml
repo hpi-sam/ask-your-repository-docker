@@ -63,7 +63,7 @@ services:
       - ${WORDKIT_DIR}:/root/nltk_data
     command: ./wait-for.sh neo4j:7687 --timeout=60 -- ./start-gunicorn.sh
   jona:
-    image: bp2018hg1/jona_staging:latest
+    image: bp2018hg1/jona:latest
     deploy:
       replicas: ${JONA_REPLICAS}
   tobito:
