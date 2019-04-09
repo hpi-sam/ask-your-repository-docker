@@ -54,7 +54,7 @@ services:
       - ${UPLOADS_DIR}:/src/uploads
       - ${WORDKIT_DIR}:/root/nltk_data:ro
       - ${ELIJA_GOOGLE_CREDENTIALS_PATH}:/src/google_credentials.json:ro
-      - ${ELIJA_GOOGLE_CLIEND_IDS_PATH}:/src/clientIds.json:ro
+      - ${ELIJA_GOOGLE_CLIENT_IDS_PATH}:/src/clientIds.json:ro
     command: ./wait-for.sh neo4j:7687 --timeout=60 -- ./start-gunicorn.sh
   jona:
     image: bp2018hg1/jona_${ENVIRONMENT}:latest
