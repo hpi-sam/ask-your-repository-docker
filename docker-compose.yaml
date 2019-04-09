@@ -56,7 +56,7 @@ services:
       - ${ELIJA_GOOGLE_CREDENTIALS_PATH}:/src/google_credentials.json:ro
     command: ./wait-for.sh neo4j:7687 --timeout=60 -- ./start-gunicorn.sh
   jona:
-    image: bp2018hg1/jona:latest
+    image: bp2018hg1/jona_${ENVIRONMENT}:latest
     deploy:
       replicas: ${JONA_REPLICAS}
   tobito:
