@@ -53,6 +53,7 @@ services:
     volumes:
       - ${UPLOADS_DIR}:/src/uploads
       - ${WORDKIT_DIR}:/root/nltk_data
+      - ${ELIJA_GOOGLE_CREDENTIALS_PATH}:/src/google_credentials.json
     command: ./wait-for.sh neo4j:7687 --timeout=60 -- ./start-gunicorn.sh
   jona:
     image: bp2018hg1/jona:latest
@@ -63,6 +64,8 @@ services:
     deploy:
       replicas: ${TOBITO_REPLICAS}
     env_file: ./tobito.env
+    volumes:
+      - ${TOBITO_GOOGLE_CREDENTIALS_PATH}:/usr/src/app/google_credentials.json
   files_nginx:
     image: nginx:1.13.12-alpine
     deploy:
