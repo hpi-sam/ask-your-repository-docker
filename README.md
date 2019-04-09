@@ -18,8 +18,11 @@ Change directory
 
 Setup .env files
 
-`cp .env.example .env`
+`cp .env.example .env`  
 `cp nginx.env.example nginx.env`
+
+`touch elija.env` (see [here](https://github.com/hpi-sam/ask-your-repository-api/blob/master/.env.example) for env example)  
+`touch tobito.env` (see [here](https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter/blob/master/.env.example) for env example)
 
 Fill the environment files with appropriate data.
 
@@ -50,7 +53,7 @@ Make sure all services are up and running
 The `docker-compose.yaml` is read only and is not checked into version control.
 To make adjustments to the file update the `compose-template.yaml` and run
 
-`./update-compose`
+`./update-compose`  
 `docker stack deploy -c docker-compose.yaml <name>`
 
 to create a new updated `docker-compose.yaml` and to apply the changes to the stack.

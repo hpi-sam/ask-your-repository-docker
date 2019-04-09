@@ -49,15 +49,7 @@ services:
     depends_on:
       - neo4j
       - elasticsearch
-    environment:
-      - ES_URL=http://elasticsearch:9200
-      - FILE_SERVER=${FILE_SERVER_URL}
-      - UPLOAD_FOLDER=uploads/
-      - NEO4J_URL=bolt://:@neo4j:7687
-      - CLOUD_VISION_API_URL=https://vision.googleapis.com/v1/images:annotate
-      - CLOUD_VISION_API_KEY=
-      - JWT_SECRET_KEY=
-      - SECURE_COOKIES=True
+    env_file: ./elija.env
     volumes:
       - ${UPLOADS_DIR}:/src/uploads
       - ${WORDKIT_DIR}:/root/nltk_data
@@ -70,6 +62,7 @@ services:
     image: bp2018hg1/tobito:latest
     deploy:
       replicas: ${TOBITO_REPLICAS}
+    env_file: ./tobito.env
   files_nginx:
     image: nginx:1.13.12-alpine
     deploy:
