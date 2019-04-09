@@ -32,6 +32,10 @@ Initialize docker swarm:
 
 `docker swarm init`
 
+Explicitly export your envars:
+
+`export $(cat .env | xargs)`
+
 Deploy application:
 
 `docker stack deploy -c docker-compose.yaml <name>`
