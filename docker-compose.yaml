@@ -21,9 +21,9 @@ services:
       replicas: ${NEO4J_REPLICAS}
       resources:
         limits:
-          memory: 1G
+          memory: 1.8G
         reservations:
-          memory: 800M
+          memory: 1.5G
     environment:
       - NEO4J_AUTH=none
     volumes:
