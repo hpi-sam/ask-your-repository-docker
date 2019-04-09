@@ -27,7 +27,7 @@ services:
     environment:
       - NEO4J_AUTH=none
     volumes:
-      - $NEO4J_DIR:/data
+      - ${NEO4J_DIR}:/data
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
     deploy:

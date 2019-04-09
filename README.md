@@ -26,12 +26,6 @@ Setup .env files:
 
 Fill the environment files with appropriate data.
 
-Create the docker-compose config:
-
-`./update-compose`
-
-This will fill the `compose-template.yaml` with the variables you configured in your .env file resulting in a deployable `docker-compose.yaml`.
-
 ------
 
 Initialize docker swarm:
@@ -50,13 +44,15 @@ Make sure all services are up and running:
 
 **Always commit your changes to this repo to keep it in sync with the files on the server!**
 
-The `docker-compose.yaml` is read only and is not checked into version control.
-To make adjustments to the file update the `compose-template.yaml` and run
+Do not make adjustments to the `docker-compose.yaml` directly.  
+Instead, use the env files to change configurations.  
 
-`./update-compose`  
+If you do need to change the compose file try to keep things customizable.  
+Make sure the compose file still works for different environments (development, staging, production).
+
+After making adjustments redeploy the stack:
+
 `docker stack deploy -c docker-compose.yaml <name>`
-
-to create a new updated `docker-compose.yaml` and to apply the changes to the stack.
 
 ## Redeploy services
 
@@ -70,4 +66,5 @@ For example to deploy the latest Jona image:
 
 Mind that you don't need to specify the real service name with the stack name as a prefix.
 The stack name is added automatically.
+
 For more informations view the [deploy script file](https://github.com/hpi-sam/ask-your-repository-docker/blob/master/deploy).
