@@ -51,6 +51,18 @@ Make sure all services are up and running:
 
 `docker service ls`
 
+Once these steps are executed the following services should be running:
+
+- Main NGINX (Reverse proxy for all services)
+- Jona (Web/Frontend)
+- Elija (API/Backend)
+- Tobito (Dialogflow Adapter)
+- Files NGINX (Serving uploaded files)
+- Elasticsearch (Search database)
+- Neo4J (Graph database)
+
+You can take a look at the [`docker-compose.yaml`](https://github.com/hpi-sam/ask-your-repository-docker/blob/master/docker-compose.yaml) for more information.
+
 ## Changes to the configuration
 
 **Always commit your changes to this repo to keep it in sync with the files on the server!**
