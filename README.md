@@ -1,4 +1,4 @@
-# ask-your-repository-docker
+# Ask your Repository Docker Deployment
 
 A docker-compose deployment for ask-your-repository.
 
