@@ -2,6 +2,13 @@
 
 A docker-compose deployment for ask-your-repository.
 
+This repo is part of the "Ask your Repository" Bachelor project containing the following repos:  
+- [Elija - Ask your Repository Backend API](https://github.com/hpi-sam/ask-your-repository-api)  
+- [Jona - Ask your Repository Web Frontend](https://github.com/hpi-sam/ask-your-repository-web)  
+- [Tobito - Ask your Repository Dialogflow Adapter](https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter)  
+- [Ask your Repository Docker Deployment](https://github.com/hpi-sam/ask-your-repository-docker)  
+- [Ask your Repository Project Documentation](https://github.com/hpi-sam/BP2018HG1)  
+
 ## Setup on Server
 
 Make sure [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) are installed.
